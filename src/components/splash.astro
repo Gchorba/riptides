@@ -4,6 +4,12 @@ import { Icon } from "astro-icon";
 import Starfield from "~/components/starfield.astro";
 import HeroImage from "~/components/hero-image.astro";
 
+
+import { Image } from '@astrojs/image/components';
+const imageUrl = 'https://astro.build/assets/ripw.png';
+import localImage from '../assets/ripw.png';
+
+
 const widths = [450, 800];
 const sizes = "(min-width: 640px) 42vw, 67vw";
 
@@ -28,8 +34,13 @@ const pngSrcset = png.map(({ srcset }) => srcset).join(",");
     <h2
       class="flex flex-col self-end gap-2 sm:gap-4 sm:self-auto sm:justify-self-end"
     >
-    <img src="src/assets/ripw.png" alt="logo">
-    
+    <img src="/assets/images/ripw.png" alt="logo">
+    <img src="/images/ripw.png" alt="logo">
+    <img src="/ripw.png" alt="logo">
+
+// height will be recalculated to match the original (local only) or specified aspect ratio
+<Image src={localImage} width={300} />
+<Image src={imageUrl} width={300} aspectRatio={16/9} />
       <div
         class="font-extrabold tracking-tighter text-center text-8xl gradient-text"
       >
